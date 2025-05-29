@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
-import './jobs.css';
-import event1 from '../Images/event1.jpg';
-import event2 from '../Images/event2.jpg';
-import event3 from '../Images/event3.jpg';
+import React, { useState } from "react";
+import "./jobs.css";
+import "./events.css";
+import event1 from "../Images/event1.jpg";
+import event2 from "../Images/event2.jpg";
+import event3 from "../Images/event3.jpg";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Events() {
   const eventsData = [
@@ -13,7 +16,7 @@ function Events() {
       image: event1,
       link: "#",
       month: "April",
-      type: "Workshop"
+      type: "Workshop",
     },
     {
       title: "Community Clean-Up Day",
@@ -22,7 +25,7 @@ function Events() {
       image: event2,
       link: "#",
       month: "May",
-      type: "Community"
+      type: "Community",
     },
     {
       title: "Youth Innovation Summit",
@@ -31,8 +34,8 @@ function Events() {
       image: event3,
       link: "#",
       month: "May",
-      type: "Summit"
-    }
+      type: "Summit",
+    },
   ];
 
   const [selectedMonth, setSelectedMonth] = useState("all");
@@ -42,9 +45,10 @@ function Events() {
   const [formData, setFormData] = useState({ name: "", email: "" });
   const [submitted, setSubmitted] = useState(false);
 
-  const filteredEvents = eventsData.filter(event =>
-    (selectedMonth === "all" || event.month === selectedMonth) &&
-    (selectedType === "all" || event.type === selectedType)
+  const filteredEvents = eventsData.filter(
+    (event) =>
+      (selectedMonth === "all" || event.month === selectedMonth) &&
+      (selectedType === "all" || event.type === selectedType)
   );
 
   const openModal = (eventTitle) => {
@@ -61,21 +65,46 @@ function Events() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!formData.name || !formData.email) {
-      alert("Please fill in all fields.");
+      toast.warn("⚠️ Please fill in all fields.");
       return;
     }
 
-    setSubmitted(true);
-    setTimeout(() => {
-      closeModal();
-    }, 2000);
+    try {
+      const response = await fetch(
+        "http://localhost:5000/api/events/register",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            eventTitle: selectedEvent,
+          }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (response.ok && data.message) {
+        setSubmitted(true);
+        toast.success("🎉 Registration successful!");
+        setTimeout(() => closeModal(), 2000);
+      } else {
+        toast.error(`❌ ${data.error || "Registration failed."}`);
+      }
+    } catch (error) {
+      console.error("Error registering:", error);
+      toast.error("🚫 Something went wrong. Please try again.");
+    }
   };
 
   return (
@@ -83,39 +112,66 @@ function Events() {
       <section className="events-section">
         <h2 className="section-title">Upcoming Events</h2>
         <div className="event-filters">
-          <select value={selectedMonth} onChange={e => setSelectedMonth(e.target.value)}>
+          <select
+            value={selectedMonth}
+            onChange={(e) => setSelectedMonth(e.target.value)}
+          >
             <option value="all">All Months</option>
             <option value="April">April</option>
             <option value="May">May</option>
           </select>
 
-          <select value={selectedType} onChange={e => setSelectedType(e.target.value)}>
+          <select
+            value={selectedType}
+            onChange={(e) => setSelectedType(e.target.value)}
+          >
             <option value="all">All Types</option>
             <option value="Workshop">Workshop</option>
             <option value="Community">Community</option>
             <option value="Summit">Summit</option>
           </select>
         </div>
-
         <div className="events-container">
-          {filteredEvents.map((event, index) => (
-            <div className="event-card" key={index}>
-              <img src={event.image} alt={event.title} className="event-img" />
-              <div className="event-content">
-                <h3 className="event-title">{event.title}</h3>
-                <p className="event-date">{event.date}</p>
-                <p className="event-description">{event.description}</p>
-                <button className="register-btn" onClick={() => openModal(event.title)}>Register</button>
+          {filteredEvents.length === 0 ? (
+            <p className="no-events-message">
+              No events found for the selected filters.
+            </p>
+          ) : (
+            filteredEvents.map((event, index) => (
+              <div className="event-card" key={index}>
+                <img
+                  src={event.image}
+                  alt={event.title}
+                  className="event-img"
+                />
+                <div className="event-content">
+                  <h3 className="event-title">{event.title}</h3>
+                  <p className="event-date">{event.date}</p>
+                  <p className="event-description">{event.description}</p>
+                  <button
+                    className="register-btn"
+                    onClick={() => openModal(event.title)}
+                  >
+                    Register
+                  </button>
+                </div>
               </div>
-            </div>
-          ))}
+            ))
+          )}
         </div>
       </section>
 
       {modalOpen && (
-        <div className="modal" onClick={e => e.target.className === 'modal' && closeModal()}>
+        <div
+          className="modal fade-in"
+          onClick={(e) => {
+            if (e.target.classList.contains("modal")) closeModal();
+          }}
+        >
           <div className="modal-content">
-            <span className="close-btn" onClick={closeModal}>&times;</span>
+            <span className="close-btn" onClick={closeModal}>
+              &times;
+            </span>
             <h3>Register for {selectedEvent}</h3>
 
             {submitted ? (
@@ -138,12 +194,30 @@ function Events() {
                   onChange={handleChange}
                   required
                 />
-                <button type="submit" className="btn">Submit</button>
+
+                <input
+                  type="text"
+                  name="eventTitle"
+                  value={selectedEvent}
+                  disabled
+                  style={{ marginBottom: "10px" }}
+                />
+                <input
+                  type="date"
+                  name="registrationDate"
+                  value={new Date().toISOString().split("T")[0]}
+                  readOnly
+                />
+                <button type="submit" className="btn">
+                  Submit
+                </button>
               </form>
             )}
           </div>
         </div>
       )}
+
+      <ToastContainer position="top-center" autoClose={3000} />
     </>
   );
 }

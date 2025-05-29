@@ -1,17 +1,15 @@
-
-
 :root {
   --primary-color: #2a696e;
   --secondary-color: #0097b2;
-  --accent-color: #1D3557;
+  --accent-color: #1d3557;
   --neutral-color: #fcfcf7;
   --extra-light: #f0f0f0;
   --white: #fff;
   --text-dark: #333;
   --text-color: #0c0c0c;
   --text-light: #f0f0f0;
-  --font-body: 'Plus_Jakarta_Sans', sans-serif;
-  --font-heading: 'Poppins', sans-serif;
+  --font-body: "Plus_Jakarta_Sans", sans-serif;
+  --font-heading: "Poppins", sans-serif;
   --max-width: 1200px;
 }
 
@@ -29,10 +27,9 @@
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  }
+}
 
-
-.hero-content{
+.hero-content {
   background: rgba(255, 255, 255, 0.85);
   padding: 2rem;
   border-radius: 12px;
@@ -65,11 +62,14 @@
 
 #search-bar {
   width: 50%;
-  max-width: 500px; 
+  max-width: 500px;
   padding: 10px;
   font-size: 16px;
   border: 1px solid var(--neutral-color);
   border-radius: 5px;
+  z-index: 10;
+  position: relative;
+  pointer-events: auto;
 }
 
 #search-btn {
@@ -101,7 +101,6 @@
   background-color: var(--primary-color);
 }
 
-
 #search-btn i {
   font-size: 18px;
 }
@@ -119,17 +118,16 @@
   }
 }
 
-.works-container{
+.works-container {
   margin: 1rem 0;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  
 }
 
-.works-div{
-  display: flex;
+.works-div {
+  display: none;
   justify-content: space-between;
   align-items: center;
   width: 100%;
@@ -141,28 +139,25 @@
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 151, 178, 0.3);
   text-shadow: 0 0 2px rgba(255, 255, 255, 0.5);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;  
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   border: 2px solid var(--secondary-color);
   cursor: pointer;
 }
 
-.works-div:hover{
+.works-div:hover {
   transform: translateY(-5px);
-  box-shadow:
-    0 0 5px var(--secondary-color),
-    0 0 10px var(--secondary-color),
-    0 0 10px var(--accent-color),
-    0 0 20px var(--accent-color);
+  box-shadow: 0 0 5px var(--secondary-color), 0 0 10px var(--secondary-color),
+    0 0 10px var(--accent-color), 0 0 20px var(--accent-color);
 }
 
-.works{
+.works {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
 
-.works h4{
+.works h4 {
   font-size: 1.5rem;
   color: var(--text-dark);
   font-family: var(--font-heading);
@@ -170,7 +165,7 @@
   text-transform: uppercase;
 }
 
-.works p{
+.works p {
   font-size: 0.5rem;
   color: var(--text-color);
   font-family: var(--font-body);
@@ -179,46 +174,37 @@
   margin: 0 1rem;
 }
 
-.works-div:hover .works h4{
+.works-div:hover .works h4 {
   color: var(--secondary-color);
   transition: color 0.3s ease;
 }
 
-.works-div:hover .works p{
+.works-div:hover .works p {
   color: var(--text-dark);
   transition: color 0.3s ease;
 }
 
+@media (width > 768px) {
+  .works-div {
+    display: flex;
+  }
 
-@media (width > 768px){
-  .hero-section{
+  .hero-section {
     min-height: 30vh;
   }
-  .hero-content h1{
+  .hero-content h1 {
     margin-top: 1rem;
   }
 
-  .works h4{
+  .works h4 {
     font-size: 2.5rem;
   }
 
-  .works p{
+  .works p {
     font-size: 1rem;
   }
 
-  .works-div{
+  .works-div {
     padding: 1rem;
   }
-  
-}
-
-#backToTop {
-  position: fixed;
-  bottom: 20px;
-  right: 10px;
-  font-size: 3rem;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  z-index: 100;
 }

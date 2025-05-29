@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import './featured.css';
-import proj1 from '../Images/proj1.jpg';
-import proj2 from '../Images/proj2.jpg';
-import proj3 from '../Images/proj3.jpg';
+import React, { useState } from "react";
+import "./featured.css";
+import proj1 from "../Images/proj1.jpg";
+import proj2 from "../Images/proj2.jpg";
+import proj3 from "../Images/proj3.jpg";
 
 function Latest() {
   const allArticles = [
@@ -10,26 +10,29 @@ function Latest() {
       image: proj1,
       date: "April 10, 2025",
       title: "Building Stronger Communities Through Tech",
-      description: "Explore how digital platforms are transforming local collaboration and opportunities for everyone.",
+      description:
+        "Explore how digital platforms are transforming local collaboration and opportunities for everyone.",
       category: "Technology",
-      link: "#"
+      link: "#",
     },
     {
       image: proj2,
       date: "April 5, 2025",
       title: "Empowering Youth With Skill-Based Learning",
-      description: "Discover how learning programs are shaping the future workforce.",
+      description:
+        "Discover how learning programs are shaping the future workforce.",
       category: "Education",
-      link: "#"
+      link: "#",
     },
     {
       image: proj3,
       date: "March 30, 2025",
       title: "The Role of Community in Sustainable Growth",
-      description: "Learn about initiatives that encourage sustainability through shared responsibility.",
+      description:
+        "Learn about initiatives that encourage sustainability through shared responsibility.",
       category: "Community",
-      link: "#"
-    }
+      link: "#",
+    },
   ];
 
   const [filteredArticles, setFilteredArticles] = useState(allArticles);
@@ -40,7 +43,9 @@ function Latest() {
     if (category === "all") {
       setFilteredArticles(allArticles);
     } else {
-      setFilteredArticles(allArticles.filter(article => article.category === category));
+      setFilteredArticles(
+        allArticles.filter((article) => article.category === category)
+      );
     }
   };
 
@@ -64,20 +69,24 @@ function Latest() {
       <div className="articles-container">
         {filteredArticles.map((article, index) => (
           <article className="article-card" key={index}>
-          <img src={article.image} alt={article.title} />
+            <img src={article.image} alt={article.title} />
             <div className="article-content">
               <span className="article-date">{article.date}</span>
               <h3>{article.title}</h3>
               <p>{article.description}</p>
-              <a href={article.link} className="read-more">Read More →</a>
+              <a href={article.link} className="read-more">
+                Read More →
+              </a>
             </div>
           </article>
         ))}
       </div>
 
-      <div class="load-more-container2">
-        <button id="load-more-btn" class="btn1">Load More <i class="ri-arrow-right-up-line"></i></button>
-        </div>
+      <div className="load-more-container2">
+        <button id="load-more-btn" className="btn1">
+          Load More <i className="ri-arrow-right-up-line"></i>
+        </button>
+      </div>
     </section>
   );
 }

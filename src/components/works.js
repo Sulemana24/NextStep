@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from 'react';
-import './hero.css';
+import React, { useEffect, useRef } from "react";
+import "./hero.css";
 
 function Works() {
   const countersRef = useRef([]);
@@ -7,12 +7,12 @@ function Works() {
   useEffect(() => {
     const counters = countersRef.current;
 
-    counters.forEach(counter => {
+    counters.forEach((counter) => {
       const targetValue = counter.getAttribute("data-target");
       let target;
 
-      if (targetValue.includes('K')) {
-        target = parseFloat(targetValue.replace('K', '')) * 1000;
+      if (targetValue.includes("K")) {
+        target = parseFloat(targetValue.replace("K", "")) * 1000;
       } else {
         target = +targetValue;
       }
@@ -22,7 +22,8 @@ function Works() {
 
       const formatNumber = (number) => {
         if (number >= 1000) {
-          return (number / 1000).toFixed(1) + "K";
+          const finalValue = number / 1000;
+          return finalValue.toFixed() + "K";
         } else {
           return number;
         }
@@ -44,30 +45,30 @@ function Works() {
 
   return (
     <section className="works-container">
-    <div className="works-div">
-      {[
-        { target: "10K", label: "community members" },
-        { target: "300", label: "projects completed" },
-        { target: "150", label: "jobs connected" },
-        { target: "50", label: "community partners" }
-      ].map((item, index) => (
-        <div className="works" key={index}>
-          <h4>
-            <span
-              className="counter"
-              data-target={item.target}
-              ref={el => (countersRef.current[index] = el)}
-            >
-              0
-            </span>
-            +
-          </h4>
-          <p>{item.label}</p>
-        </div>
-      ))}
-    </div>
-  </section>
-);
-};
+      <div className="works-div">
+        {[
+          { target: "10K", label: "community members" },
+          { target: "300", label: "projects completed" },
+          { target: "150", label: "jobs connected" },
+          { target: "50", label: "community partners" },
+        ].map((item, index) => (
+          <div className="works" key={index}>
+            <h4>
+              <span
+                className="counter"
+                data-target={item.target}
+                ref={(el) => (countersRef.current[index] = el)}
+              >
+                0
+              </span>
+              +
+            </h4>
+            <p>{item.label}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
 
 export default Works;

@@ -1,15 +1,15 @@
 :root {
   --primary-color: #2a696e;
   --secondary-color: #0097b2;
-  --accent-color: #1D3557;
+  --accent-color: #1d3557;
   --neutral-color: #fcfcf7;
   --extra-light: #f0f0f0;
   --white: #fff;
   --text-dark: #333;
   --text-color: #0c0c0c;
   --text-light: #f0f0f0;
-  --font-body: 'Plus_Jakarta_Sans', sans-serif;
-  --font-heading: 'Poppins', sans-serif;
+  --font-body: "Plus_Jakarta_Sans", sans-serif;
+  --font-heading: "Poppins", sans-serif;
   --max-width: 1200px;
 }
 
@@ -46,7 +46,7 @@
 
 .feature-card:hover {
   transform: translateY(-5px);
-  box-shadow: rgba(0,0,0, 0.1);
+  box-shadow: rgba(0, 0, 0, 0.1);
 }
 
 .features-grid a.feature-card {
@@ -65,9 +65,15 @@
 }
 
 @keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.25); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.25);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .feature-card:hover i {
@@ -143,7 +149,7 @@
 
 .how-it-works .step {
   opacity: 0;
-  transform: translateY(50px); 
+  transform: translateY(50px);
   transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 
@@ -155,7 +161,7 @@
 .how-it-works .step.revealed {
   opacity: 1;
   transform: translateY(0);
-  transition-delay: 0.2s; 
+  transition-delay: 0.2s;
 }
 
 .how-it-works .step:nth-child(1).revealed {
@@ -195,7 +201,7 @@
   background-color: var(--white);
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
   transition: transform 0.3s;
 }
 
@@ -268,14 +274,14 @@
   color: var(--white);
 }
 
-.load-more-container2{
+.load-more-container2 {
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 1rem 0 3rem;
 }
 
-.btn1{
+.btn1 {
   background: var(--accent-color);
   color: #fff;
   padding: 10px 15px;
@@ -292,6 +298,3 @@
 .btn1:hover {
   background: var(--primary-color);
 }
-
-
-

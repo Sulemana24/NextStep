@@ -1,15 +1,15 @@
 :root {
   --primary-color: #2a696e;
   --secondary-color: #0097b2;
-  --accent-color: #1D3557;
+  --accent-color: #1d3557;
   --neutral-color: #fcfcf7;
   --extra-light: #f0f0f0;
   --white: #fff;
   --text-dark: #333;
   --text-color: #0c0c0c;
   --text-light: #f0f0f0;
-  --font-body: 'Plus_Jakarta_Sans', sans-serif;
-  --font-heading: 'Poppins', sans-serif;
+  --font-body: "Plus_Jakarta_Sans", sans-serif;
+  --font-heading: "Poppins", sans-serif;
   --max-width: 1200px;
 }
 
@@ -20,40 +20,21 @@ h1 {
   font-size: 2.5rem;
 }
 
-.search-bar {
-  display: block;
-  width: 80%;
-  max-width: 500px;
-  margin: 0 auto 30px auto;
-  padding: 12px 16px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-}
-
-.search-bar:focus {
-  outline: none;
-  border-color: #4a90e2;
-  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
-}
-
-/* Jobs container */
 #jobsContainer {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
   padding: 0 5% 20px;
-  margin: 0;
+  margin: 2rem 0 0;
+  width: 100%;
 }
-
 
 .job-card {
   background: #fff;
   border: 1px solid #ddd;
   padding: 20px;
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   transition: transform 0.2s ease;
 }
 
@@ -74,6 +55,29 @@ h1 {
   margin-bottom: 12px;
 }
 
+.job-board {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-bar {
+  padding: 12px 20px;
+  width: 100%;
+  max-width: 400px;
+  font-size: 1rem;
+  margin-bottom: 40px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.search-bar:focus {
+  outline: none;
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+}
 
 .tag {
   display: inline-block;
@@ -86,14 +90,14 @@ h1 {
   margin-bottom: 0.5rem;
 }
 
-.tag:hover{
+.tag:hover {
   background: #d1d5db;
   color: #1f2937;
   cursor: pointer;
   transform: scale(1.05);
 }
 
-.apply-btn{
+.apply-btn {
   background: var(--secondary-color);
   color: #fff;
   padding: 10px 15px;
@@ -111,19 +115,19 @@ h1 {
   background: var(--primary-color);
 }
 
-.job-board-container{
+.job-board-container {
   display: flex;
   flex-direction: column;
 }
 
-.load-more-container2{
+.load-more-container2 {
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 1rem 0 3rem;
 }
 
-.btn1{
+.btn1 {
   background: var(--accent-color);
   color: #fff;
   padding: 10px 15px;
@@ -140,7 +144,109 @@ h1 {
   background: var(--primary-color);
 }
 
-/* jobs.css */
+mark {
+  background-color: yellow;
+  padding: 0 2px;
+}
+
+select {
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 6px;
+  font-weight: 600;
+  border: 1pxs solid #ccc;
+  background-color: #f9f9f9;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 2rem;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 60%;
+}
+
+.job-filters {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.apply-form label {
+  display: block;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.apply-form input[type="text"],
+.apply-form input[type="email"],
+.apply-form input[type="file"] {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.3rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.btn-submit {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-submit:hover {
+  background-color: #45a049;
+}
+
+.btn-cancel {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-cancel:hover {
+  background-color: #d32f2f;
+}
 
 #forum {
   max-width: 800px;
@@ -148,8 +254,7 @@ h1 {
   padding: 1.5rem;
   background: #fefefe;
   border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  font-family: 'Segoe UI', sans-serif;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 #forum h2 {
@@ -265,4 +370,113 @@ button:hover {
   border-radius: 6px;
   margin-top: 0.4rem;
   font-size: 0.9rem;
+}
+
+@media (min-width: 768px) {
+  #jobsContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  #jobsContainer {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary-color: #81c9d4;
+    --secondary-color: #3db7c2;
+    --accent-color: #a8dadc;
+    --neutral-color: #1e1e1e;
+    --extra-light: #2a2a2a;
+    --white: #222;
+    --text-dark: #f0f0f0;
+    --text-color: #f5f5f5;
+    --text-light: #ccc;
+  }
+
+  body {
+    background-color: var(--neutral-color);
+    color: var(--text-color);
+  }
+
+  h1,
+  h2,
+  .post-title {
+    color: var(--text-dark);
+  }
+
+  .job-card,
+  .forum-post,
+  .modal-content {
+    background-color: #2a2a2a;
+    border: 1px solid #444;
+    color: var(--text-color);
+  }
+
+  .apply-form input[type="text"],
+  .apply-form input[type="email"],
+  .apply-form input[type="file"],
+  textarea,
+  select,
+  input[type="text"] {
+    background-color: #1f1f1f;
+    color: var(--text-color);
+    border: 1px solid #555;
+  }
+
+  .search-bar {
+    background-color: #1f1f1f;
+    color: var(--text-color);
+    border-color: #444;
+  }
+
+  .job-title,
+  .company,
+  .post-content,
+  .post-meta,
+  .post-tags,
+  .tag,
+  .reply {
+    color: var(--text-light);
+  }
+
+  .tag {
+    background-color: #3b3b3b;
+  }
+
+  .tag:hover {
+    background-color: #4a4a4a;
+    color: #fff;
+  }
+
+  .apply-btn,
+  .btn1,
+  .btn-submit,
+  .btn-cancel,
+  .reply-button,
+  .upvote {
+    background-color: var(--secondary-color);
+    color: #fff;
+  }
+
+  .apply-btn:hover,
+  .btn1:hover,
+  .btn-submit:hover,
+  .btn-cancel:hover,
+  .reply-button:hover,
+  .upvote:hover {
+    background-color: var(--primary-color);
+  }
+
+  .reply-form {
+    background-color: #333;
+  }
+
+  mark {
+    background-color: #d1c900;
+    color: #000;
+  }
 }

@@ -1,15 +1,15 @@
 :root {
   --primary-color: #2a696e;
   --secondary-color: #0097b2;
-  --accent-color: #1D3557;
+  --accent-color: #1d3557;
   --neutral-color: #fcfcf7;
   --extra-light: #f0f0f0;
   --white: #fff;
   --text-dark: #333;
   --text-color: #0c0c0c;
   --text-light: #f0f0f0;
-  --font-body: 'Plus_Jakarta_Sans', sans-serif;
-  --font-heading: 'Poppins', sans-serif;
+  --font-body: "Plus_Jakarta_Sans", sans-serif;
+  --font-heading: "Poppins", sans-serif;
   --max-width: 1200px;
 }
 
@@ -34,9 +34,7 @@
 }
 
 .about-company:hover {
-  box-shadow:
-    0 0 10px var(--secondary-color),
-    0 0 20px var(--accent-color);
+  box-shadow: 0 0 10px var(--secondary-color), 0 0 20px var(--accent-color);
   transform: translateY(-6px);
 }
 
@@ -109,9 +107,7 @@
 
 .newsletter-form button:hover {
   background-color: var(--accent-color);
-  box-shadow:
-    0 0 10px var(--secondary-color),
-    0 0 20px var(--accent-color),
+  box-shadow: 0 0 10px var(--secondary-color), 0 0 20px var(--accent-color),
     0 0 30px var(--accent-color);
   transform: translateY(-2px);
 }
@@ -200,7 +196,6 @@
   transform: scale(1.05);
 }
 
-
 @media (max-width: 600px) {
   .newsletter-form {
     flex-direction: column;
@@ -212,9 +207,14 @@
   }
 }
 
-
 @media (max-width: 768px) {
   .about-container {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .highlight-projects {
+    background-color: #0c0c0c;
   }
 }

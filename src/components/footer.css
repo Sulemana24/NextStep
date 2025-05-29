@@ -1,15 +1,15 @@
 :root {
   --primary-color: #2a696e;
   --secondary-color: #0097b2;
-  --accent-color: #1D3557;
+  --accent-color: #1d3557;
   --neutral-color: #fcfcf7;
   --extra-light: #f0f0f0;
   --white: #fff;
   --text-dark: #333;
   --text-color: #0c0c0c;
   --text-light: #f0f0f0;
-  --font-body: 'Plus_Jakarta_Sans', sans-serif;
-  --font-heading: 'Poppins', sans-serif;
+  --font-body: "Plus_Jakarta_Sans", sans-serif;
+  --font-heading: "Poppins", sans-serif;
   --max-width: 1200px;
 }
 
@@ -27,13 +27,12 @@ footer {
 }
 
 .footer-col {
-  min-width: 250px; 
+  min-width: 250px;
 }
 
-.footer-col2{
-  min-width: 250px; 
+.footer-col2 {
+  min-width: 250px;
 }
-
 
 .footer-links,
 .header-links {
@@ -46,7 +45,7 @@ footer {
   margin-bottom: 0.5rem;
 }
 
-a{
+a {
   text-decoration: none;
 }
 
@@ -55,21 +54,19 @@ a{
   color: var(--text-color);
   font-size: 0.9rem;
   transition: color 0.3s;
-  
 }
 
 .footer-links li a:hover,
 .header-links li a:hover {
   color: var(--primary-color);
-  
 }
 
-.social-share{
+.social-share {
   padding: 0;
   width: 100%;
 }
 
-.social-share a{
+.social-share a {
   border: 2px solid var(--secondary-color);
   border-radius: 5px;
   padding: 3px;
@@ -80,7 +77,7 @@ a{
   transition: all 0.3s ease;
 }
 
-.social-share a:hover{
+.social-share a:hover {
   background: none;
   color: var(--secondary-color);
 }
@@ -113,21 +110,21 @@ a{
 
 #column form button:hover {
   background-color: var(--primary-color);
-} 
+}
 
-.footer-bar p{
+.footer-bar p {
   padding: 0;
   margin: 0;
 }
 
-.footer-bar{
-  font-size: .9rem;
+.footer-bar {
+  font-size: 0.9rem;
   color: var(--text-color);
   text-align: center;
   background-color: var(--white);
 }
 
-.footer-bar p:last-child{
+.footer-bar p:last-child {
   border-top: 2px solid var(--text-dark);
   border-bottom: 2px solid var(--text-dark);
   display: inline-block;
@@ -151,9 +148,9 @@ a{
   text-align: center;
 }
 
-.conner-image{
+.conner-image {
   min-height: 10vh;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
 }
@@ -270,13 +267,11 @@ a{
   padding: 0 1rem;
 }
 
-
 .faq-answer.visible {
-  max-height: 300px; 
+  max-height: 300px;
   opacity: 1;
   padding: 1rem;
 }
-
 
 .toggle-icon {
   float: right;
@@ -289,15 +284,19 @@ a{
   margin-left: 10px;
 }
 
-
 .faq-question.open .toggle-icon {
   transform: rotate(-135deg);
 }
 
-
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-5px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .events-section {
@@ -368,13 +367,13 @@ a{
   color: var(--secondary-color);
 }
 
-.load-more-container{
+.load-more-container {
   display: flex;
   justify-content: center;
   margin-top: 2rem;
 }
 
-.load-more-container button{
+.load-more-container button {
   background: var(--secondary-color);
   color: var(--white);
   border: none;
@@ -384,7 +383,7 @@ a{
   transition: background 0.3s ease;
 }
 
-.load-more-container button:hover{
+.load-more-container button:hover {
   background: var(--primary-color);
 }
 
@@ -422,8 +421,10 @@ a{
   display: none;
   position: fixed;
   z-index: 1000;
-  left: 0; top: 0;
-  width: 100%; height: 100%;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
   background: rgba(0, 0, 0, 0.7);
   justify-content: center;
   align-items: center;
@@ -464,39 +465,45 @@ a{
   cursor: pointer;
 }
 
-@media (min-width: 768px){
+@media (min-width: 768px) {
   .footer-container {
     grid-template-columns: repeat(2, 1fr);
     margin-left: 2rem;
-}
+  }
 
-.footer-col {
+  .footer-col {
     text-align: left;
+  }
+
+  .footer-bar {
+    padding-bottom: 1rem;
+  }
 }
 
-.footer-bar{
-  padding-bottom: 1rem;
-}
+@media (width > 768px) {
+  .footer-bar {
+    padding: 0;
+  }
+
+  .footer-bar p {
+    padding: 0;
+    margin: 0;
+  }
+
+  .footer-bar p:last-child {
+    margin: 1rem 0 2rem;
+  }
 }
 
-@media (width > 768px){
-  
-.footer-bar{
-  padding: 0;
-}
-
-.footer-bar p{
-  padding: 0;
-  margin: 0;
-}
-
-.footer-bar p:last-child{
-  margin: 1rem 0 2rem;
-}
+@media (width > 820px) {
+  .conner-image {
+    margin-top: 2rem;
+    display: flex;
+  }
 }
 
 @media (min-width: 1024px) {
   .footer-container {
-      grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 }
